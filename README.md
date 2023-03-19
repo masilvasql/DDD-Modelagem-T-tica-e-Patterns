@@ -24,3 +24,15 @@ transform: {
 
 # Rodando o teste.
 ``` npm test ```
+
+### Ponto de atenção nos testes.
+
+* Alterado e adicionado scripts no package.json para ter 100% de cobertura nos testes até mesmo em assinatura de métodos.
+Ficando da seguinte forma:
+
+ ```
+"scripts": {
+    "test": "npm run tsc -- --noEmit && jest",
+    "tsc":"tsc"
+}
+ ```

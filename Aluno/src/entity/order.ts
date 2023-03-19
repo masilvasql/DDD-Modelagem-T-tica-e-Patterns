@@ -17,7 +17,7 @@ export default class Order{
     }
 
     total():number{
-        return this._items.reduce((total, item) => total + item._price, 0);
+        return this._items.reduce((total, item) => total + item.price, 0);
     }
 
     validate():boolean{
@@ -31,6 +31,10 @@ export default class Order{
 
         if(this._id.length===0){
             throw new Error("Id is Required");
+        }
+
+        if(this._items.some(item => item.quantity <= 0)){
+            throw new Error("Quantity must be greater than zero");
         }
 
         return true
