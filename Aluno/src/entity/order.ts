@@ -1,25 +1,39 @@
 //Agregados
 
-import OrderItem from "./orderItemts";
+import OrderItem from "./orderItem";
 
 export default class Order{
-    _id:string ;
-    _customerID:string;
-    _items:OrderItem[];
-
+    private _id:string ;
+    private _customerID:string;
+    private _items:OrderItem[];
+    private _total:number;
 
     constructor(id:string, customerID:string, items:OrderItem[]){
         this._id = id;
         this._customerID = customerID;
         this._items = items;
+        this._total = this.total()
+        this.validate()
     }
 
-    total(){
-        let total = 0;
-        for(let item of this._items){
-            total += item._price;
+    total():number{
+        return this._items.reduce((total, item) => total + item._price, 0);
+    }
+
+    validate():boolean{
+        if(this._items.length === 0){
+            throw new Error("Order without items");
         }
-        return total;
+
+        if(this._customerID.length ===0 ){ 
+            throw new Error("CustomerID is Required");
+        }
+
+        if(this._id.length===0){
+            throw new Error("Id is Required");
+        }
+
+        return true
     }
 
   

@@ -2,13 +2,13 @@
 //VO
 export default class Address {
 
-    _street: string = "";
-    _number: string = "";
-    _city: string = "";
-    _zipCode: string = "";
+    _street: string;
+    _number: number;
+    _city: string;
+    _zipCode: string;
 
 
-    constructor(street: string, number: string, city: string, zipCode: string, country: string) {
+    constructor(street: string, number: number, city: string, zipCode: string, country: string) {
         this._street = street;
         this._number = number;
         this._city = city;
@@ -22,7 +22,7 @@ export default class Address {
             throw new Error("Street is Required")
         }
 
-        if (this._number.length === 0) {
+        if (this._number === 0 || this._number === undefined) {
             throw new Error("Number is Required")
         }
 
@@ -42,7 +42,7 @@ export default class Address {
         this.validate();
     }
 
-    changeNumber(number: string) {
+    changeNumber(number: number) {
         this._number = number;
         this.validate();
     }
