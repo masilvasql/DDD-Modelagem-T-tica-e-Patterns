@@ -36,3 +36,31 @@ Ficando da seguinte forma:
     "tsc":"tsc"
 }
  ```
+
+# Configurando Sequelize
+Comando: ```npm install sequelize reflect-metadata sequelize-typescript```
+
+# Configurando sqlite
+Comando: ```npm instal sqlite3```
+
+# Arquivo de configuração do swc.
+* Necessário para trabalhar com decorators
+* criado na raiz o arquivo **.swcsrc**
+Codigo : 
+
+```{
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true,
+            "decorators": true,
+            "dynamicImport": true
+        },
+        "target": "es2020",
+        "loose": true,
+        "transform": {
+            "legacyDecorator": true,
+            "decoretaorMetadata": true
+        }
+    }
+```

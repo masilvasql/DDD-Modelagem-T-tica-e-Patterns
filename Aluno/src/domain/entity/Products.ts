@@ -14,6 +14,10 @@ export default class Product {
         return this._name;
     }
 
+    get id (): string {
+        return this._id;
+    }
+
     get price() {
         return this._price;
     }
