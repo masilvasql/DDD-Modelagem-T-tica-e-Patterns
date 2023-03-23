@@ -4,12 +4,12 @@ import Customer from "./customer";
 describe("Customer unit tests", () => {
 
     it("should throw error when Id is empty", () => {
-        expect(() => new Customer("", "John")).toThrowError("Id is Required");
+        expect(() => new Customer("", "John")).toThrowError("Id is required");
     });
 
 
     it("should throw error when Name is empty", () => {
-        expect(() => new Customer("1", "")).toThrowError("Name is Required");
+        expect(() => new Customer("1", "")).toThrowError("Name is required");
     })
 
     it("should change name", () => {
@@ -27,7 +27,7 @@ describe("Customer unit tests", () => {
         const customer = new Customer("1", "John")
         const addres = new Address("street", 1, "city", "zipCode", "country")
         //act
-        customer.Addres = addres
+        customer.Address = addres
         customer.activate()
         //assert
         expect(customer.isActive()).toBe(true)
@@ -42,11 +42,11 @@ describe("Customer unit tests", () => {
     })
 
     it("should thrrow error when change name to empty", () => {
-        expect(() => new Customer("1", "John").changeName("")).toThrowError("Name is Required")
+        expect(() => new Customer("1", "John").changeName("")).toThrowError("Name is required")
     })
 
     it("should throw error when activate customer without address", () => {
-        expect(() => new Customer("1", "John").activate()).toThrowError("Addres is mandatory to activate customer")
+        expect(() => new Customer("1", "John").activate()).toThrowError("Address is mandatory to activate a customer")
     })
 
     it("should add reward points", () => {	
