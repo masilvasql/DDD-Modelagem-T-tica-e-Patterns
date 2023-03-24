@@ -16,6 +16,20 @@ export default class Order{
         this.validate()
     }
 
+    get id():string{
+        return this._id;
+    }
+
+    get customerID():string{
+        return this._customerID;
+    }
+
+    get items():OrderItem[]{
+        return this._items;
+    }
+
+    
+
     total():number{
         return this._items.reduce((total, item) => (total + (item.price * item.quantity)) , 0);
     }

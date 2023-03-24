@@ -14,6 +14,13 @@ export default class OrderItem {
         this._total = this.total();
     }
 
+    get productID(): string {
+        return this._productID;
+    }
+
+    get name (): string {
+        return this._name;
+    }
 
     get price(): number {
         return this._price;
@@ -21,6 +28,10 @@ export default class OrderItem {
 
     get quantity(): number {   
         return this._quantity;
+    }
+
+    get id(): string {
+        return this._id;
     }
 
     
