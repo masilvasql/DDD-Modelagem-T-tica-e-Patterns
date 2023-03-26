@@ -2,7 +2,7 @@
 
 import OrderItem from "./orderItem";
 
-export default class Order{
+export default class Order {
     private _id:string ;
     private _customerID:string;
     private _items:OrderItem[];
