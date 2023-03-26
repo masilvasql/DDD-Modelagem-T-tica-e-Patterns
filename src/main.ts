@@ -1,6 +1,7 @@
-import Order from "./domain/entity/order"
-import OrderItem from "./domain/entity/orderItem"
-import OrderService from "./domain/service/order.service"
+import Order from "./domain/checkout/entity/order"
+import OrderItem from "./domain/checkout/entity/orderItem"
+import OrderService from "./domain/checkout/service/order.service"
+
 
 
 const item1 = new OrderItem("1", "Item 1", 100, "p1", 2)
