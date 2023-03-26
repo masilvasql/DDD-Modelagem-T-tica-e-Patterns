@@ -55,7 +55,7 @@ describe("Domain events tets", ()=>{
 
     })
     
-    it("should notify customer created event", ()=>{
+    it("should notify when customer created event", ()=>{
         const eventDispatcher = new EventDispatcher();
         const eventHandler = new EnviaConsoleLog1Handler();
         const spyEventHandler = jest.spyOn(eventHandler, "handle");
@@ -70,7 +70,7 @@ describe("Domain events tets", ()=>{
         expect(spyEventHandler).toHaveBeenCalled()
     })
 
-    it("should notify customer has address changed event", ()=>{
+    it("should notify when customer has address changed event", ()=>{
         const eventDispatcher = new EventDispatcher();
         const eventHandler = new EnviaConsoleLog2Handler();
         const spyEventHandler = jest.spyOn(eventHandler, "handle");
