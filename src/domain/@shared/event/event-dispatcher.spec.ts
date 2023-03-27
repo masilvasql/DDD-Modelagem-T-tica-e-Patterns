@@ -4,6 +4,7 @@ import CustomerCreatedEvent from "../../customer/event/customer-created.events";
 import CustomerHasAddressChangedEvent from "../../customer/event/customer-has-address-changed.event";
 import EnviaConsoleLog1Handler from "../../customer/event/handler/EnviaConsoleLog1Handler";
 import EnviaConsoleLog2Handler from "../../customer/event/handler/EnviaConsoleLog2Handler";
+import EnviaConsoleLogChangeAddress from "../../customer/event/handler/EnviaConsoleLogChangeAdressHandler";
 import Address from "../../customer/value-object/address";
 import Product from "../../product/entity/Products";
 import SendEmailWhenProductIsCreatedHandler from "../../product/event/handler/send-email-when-product-is-created.handler";
@@ -69,11 +70,22 @@ describe("Domain events tets", ()=>{
         const customerCreatedEvent = new CustomerCreatedEvent(customer);
         eventDispatcher.notify(customerCreatedEvent);
         expect(spyEventHandler).toHaveBeenCalled()
+
+
+        const eventHandler2 = new EnviaConsoleLog2Handler();
+        const spyEventHandler2 = jest.spyOn(eventHandler2, "handle");
+
+        eventDispatcher.register("CustomerCreatedEvent", eventHandler2);
+        expect(eventDispatcher.getEventHandlers["CustomerCreatedEvent"]).toBeDefined();
+        expect(eventDispatcher.getEventHandlers["CustomerCreatedEvent"].length).toBe(2);
+        
+        eventDispatcher.notify(customerCreatedEvent);
+        expect(spyEventHandler2).toHaveBeenCalled()
     })
 
     it("should notify when customer has address changed event", ()=>{
         const eventDispatcher = new EventDispatcher();
-        const eventHandler = new EnviaConsoleLog2Handler();
+        const eventHandler = new EnviaConsoleLogChangeAddress();
         const spyEventHandler = jest.spyOn(eventHandler, "handle");
 
         eventDispatcher.register("CustomerHasAddressChangedEvent", eventHandler);
